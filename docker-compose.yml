@@ -1,0 +1,17 @@
+version: '3.8'  # Versão do Docker Compose
+
+services:
+  mysql:
+    image: mysql:latest  # Usa a imagem mais recente do MySQL disponível no Docker Hub
+    container_name: mysql-container  # Nome do contêiner MySQL
+    environment:
+      MYSQL_ROOT_PASSWORD: root  # Senha do usuário root do MySQL
+      MYSQL_DATABASE: alurafood-pagamento  # Nome do banco de dados a ser criado
+      MYSQL_PASSWORD: root  # Senha do usuário do banco de dados
+    ports:
+      - "3306:3306"  # Mapeia a porta 3306 do host para a porta 3306 do contêiner MySQL
+    volumes:
+      - mysql-data:/var/lib/mysql  # Volume para persistir os dados do MySQL
+
+volumes:
+  mysql-data:  # Define o volume para persistência dos dados do MySQL
